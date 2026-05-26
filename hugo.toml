@@ -1,0 +1,24 @@
+baseURL = 'https://smashhh.com/'
+languageCode = 'fr-FR'
+title = 'Smashhh'
+defaultContentLanguage = 'fr'
+
+disableKinds = ['taxonomy', 'term', 'section', 'page']
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+      
+# Security
+[security]
+  [security.exec]
+    allow = ['^(dart-)?sass(-embedded)?$', '^go$', '^npx$', '^postcss$', '^babel$']
+
+# Params
+[params]
+  default_image = "/img/og-smashhh.png"
+  author = "Smashhh"
+  description = "L'alliance parfaite entre design créatif et développement web performant pour propulser votre projet vers le succès."
+
+

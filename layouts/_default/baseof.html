@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="fr" class="overflow-x-hidden">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ .Title }} - {{ .Site.Title }}</title>
+
+    <!-- Méta-description spécifique à la page ou description par défaut -->
+    <meta name="description"
+        content="{{ if .Params.description }}{{ .Params.description }}{{ else }}{{ .Site.Params.description }}{{ end }}">
+
+    <!-- Balises Open Graph pour SEO et partage sur les réseaux sociaux -->
+    <meta property="og:title" content="{{ .Title }} - {{ .Site.Title }}">
+    <meta property="og:description"
+        content="{{ if .Params.description }}{{ .Params.description }}{{ else }}{{ .Site.Params.description }}{{ end }}">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ .Permalink }}">
+    <meta property="og:image"
+        content="{{ if .Params.featured_image }}{{ .Site.BaseURL }}{{ .Params.featured_image }}{{ else }}{{ .Site.Params.default_image }}{{ end }}">
+
+
+    <link rel="preload" href="/fonts/OverusedGrotesk-Roman.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/InstrumentSerif-Regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="{{ "css/style.css" | relURL }}">
+    
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+</head>
+
+<body class="antialiased" data-bgcolor="#fff">
+    {{ partial "header.html" . }}
+    <main class="overflow-x-hidden">
+        {{- block "main" . }}{{- end }}
+    </main>
+    {{ partial "footer.html" . }}
+
+    {{ $vendor := resources.Get "js/vendor.js" | minify }}
+    <script src="{{ $vendor.Permalink }}"></script>
+
+    <!-- Inclusion du JavaScript traité par Hugo Pipes -->
+    {{- $scripts := resources.Get "js/main.js" |
+    babel |
+    minify }}
+    <script src="{{ $scripts.Permalink }}"></script>
+    
+    <!-- 100% privacy-first analytics -->
+    <script async src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
+</body>
+
+</html>

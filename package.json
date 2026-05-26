@@ -1,0 +1,27 @@
+{
+  "name": "smashhh",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "hugo && NODE_ENV=production postcss assets/css/style.css -o static/css/style.css",
+    "dev": "hugo server -D & postcss assets/css/style.css -o static/css/style.css --watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/cli": "^7.25.7",
+    "@babel/core": "^7.25.8",
+    "@babel/preset-env": "^7.25.8",
+    "postcss": "^8.4.47",
+    "postcss-cli": "^11.0.0",
+    "tailwindcss": "^4.3.0"
+  },
+  "dependencies": {
+    "@tailwindcss/postcss": "^4.3.0",
+    "cssnano": "^8.0.1",
+    "gsap": "^3.12.5",
+    "lenis": "^1.1.14"
+  }
+}

@@ -1,0 +1,91 @@
+@import "tailwindcss";
+@import "./lenis.css";
+@import "./mouse-follower.min.css";
+
+@theme {
+    --color-primary: #05070F;
+    --color-secondary: #777C94;
+    --color-accent: #C9FF5D;
+    --color-accentdk: #ACEE28;
+
+    --text-base: 18px;
+
+    --font-body: "Overused Grotesk", sans-serif;
+    --font-display: InstrumentSerif, serif;
+}
+
+@layer base {
+
+    @font-face {
+        font-family: 'Overused Grotesk';
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: url('/fonts/OverusedGrotesk-Roman.woff2') format('woff2');
+    }
+
+    @font-face {
+        font-family: 'InstrumentSerif';
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: url('/fonts/InstrumentSerif-Regular.woff2') format('woff2')
+    }
+
+
+    body {
+        @apply bg-white leading-[1.65];
+    }
+    html {
+        font-family: "Overused Grotesk", system-ui, sans-serif;
+    }
+}
+
+:root {
+    --transition-duration-transform: .9s;
+    --transition-timing-function-transform: cubic-bezier(.135, .9, .15, 1);
+}
+
+.button {
+    @apply gap-4 text-center px-8 py-4 text-base leading-8 font-bold transition-colors duration-300 items-center justify-center rounded-full inline-block text-gray-950 hover:bg-accentdk;
+}
+
+
+.hero .bg {   
+    background: url(/img/bg.svg) no-repeat;
+    background-position: center bottom -200px;
+    @apply bg-cover w-full h-full top-0 left-0;
+}
+
+
+.projet-fx {
+    @apply transform transition-transform duration-[var(--transition-duration-transform)] ease-[var(--transition-timing-function-transform)];
+}
+
+.projet-fx:hover {
+    @apply scale-110;
+}
+
+.background-container {
+    @apply absolute w-full h-full overflow-hidden z-[-1] left-0 top-0;
+}
+
+.background-square {
+    background: url(/img/love.svg) no-repeat center;
+    @apply absolute w-[75px] h-[65px] bg-center bg-contain;
+}
+
+.img-wrapper{
+    @apply absolute top-[-200px] left-[-200px] w-[400px] h-[400px] overflow-hidden mix-blend-difference invisible pointer-events-none rounded-[50%] scale-[0.3];
+}
+
+html, body{
+    @apply w-full h-full;
+}
+
+.service::after {
+    @apply bg-accent content-[""] absolute w-full h-0 transition-all duration-[0.2s] ease-out z-[-1] left-0 bottom-0;
+}
+.service:hover::after {
+    @apply h-full;
+}
