@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "hugo && NODE_ENV=production postcss assets/css/style.css -o static/css/style.css",
+    "build": "NODE_ENV=production postcss assets/css/style.css -o static/css/style.css && hugo",
     "dev": "hugo server -D & postcss assets/css/style.css -o static/css/style.css --watch"
   },
   "keywords": [],
