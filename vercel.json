@@ -1,0 +1,6 @@
+{
+  "framework": "hugo",
+  "buildCommand": "NODE_ENV=production npx postcss assets/css/style.css -o static/css/style.css && hugo --minify",
+  "outputDirectory": "public",
+  "installCommand": "npm ci"
+}
